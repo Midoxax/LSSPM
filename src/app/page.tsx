@@ -1,69 +1,97 @@
-import Image from "next/image";
+const modules = [
+  {
+    name: "Website",
+    detail: "The public face of the institution — programs, news, and the entry point into every application.",
+  },
+  {
+    name: "Admissions",
+    detail: "Applications, review, and offers tracked in one pipeline from inquiry to enrollment.",
+  },
+  {
+    name: "Training",
+    detail: "Courses, cohorts, attendance, and academic records for every program the institution runs.",
+  },
+  {
+    name: "Finance",
+    detail: "Invoicing, payments, and ledgers reconciled against enrollment and student accounts.",
+  },
+  {
+    name: "CRM",
+    detail: "Every contact — prospect, student, alumnus, partner — with a shared history of outreach.",
+  },
+  {
+    name: "Portals",
+    detail: "Self-service for students and staff: records, schedules, requests, and results.",
+  },
+  {
+    name: "Documents",
+    detail: "Transcripts, contracts, and certificates — filed, versioned, and signed without paper.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="flex flex-col min-h-full">
+      <header className="border-b border-rule">
+        <div className="mx-auto max-w-4xl px-6 py-5 flex items-center justify-between">
+          <span className="font-serif text-lg tracking-tight">LSSPM</span>
+          <a
+            href="#modules"
+            className="text-sm text-slate hover:text-ink transition-colors"
+          >
+            Platform
+          </a>
+        </div>
+      </header>
+
+      <main className="flex-1">
+        <section className="mx-auto max-w-4xl px-6 pt-20 pb-16">
+          <h1 className="font-serif text-4xl sm:text-5xl leading-[1.15] max-w-2xl text-ink">
+            One system of record for the whole institution.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 max-w-md text-base leading-relaxed text-slate">
+            Admissions, training, finance, and CRM run on separate spreadsheets
+            and separate logins today. LSSPM puts them on one platform, with
+            one student record shared across every department.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#modules"
+            className="mt-9 inline-block border border-ink px-5 py-2.5 text-sm hover:bg-ink hover:text-paper transition-colors"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+            See the modules
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
+
+        <section id="modules" className="border-t border-rule">
+          <div className="mx-auto max-w-4xl px-6">
+            {modules.map((m) => (
+              <div
+                key={m.name}
+                className="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-x-8 gap-y-1 py-7 border-b border-rule"
+              >
+                <h2 className="font-serif text-xl text-ink">{m.name}</h2>
+                <p className="text-sm leading-relaxed text-slate max-w-md">
+                  {m.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-6 py-16">
+          <p className="max-w-md text-sm leading-relaxed text-slate">
+            Workflows connect the modules automatically — an accepted
+            application opens a student account, a signed contract triggers
+            the first invoice, a completed course updates the transcript.
+          </p>
+        </section>
       </main>
+
+      <footer className="border-t border-rule">
+        <div className="mx-auto max-w-4xl px-6 py-6 text-sm text-slate">
+          LSSPM Digital Institutional Platform
+        </div>
+      </footer>
     </div>
   );
 }
